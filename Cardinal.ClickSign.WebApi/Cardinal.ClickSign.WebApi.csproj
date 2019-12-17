@@ -10,7 +10,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Cardinal.ClickSign</RootNamespace>
-    <Version>1.0.1.9238</Version>
+    <Version>1.0.1.9245</Version>
     <PackageId>Cardinal.ClickSign.WebApi</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -18,11 +18,15 @@
     <Company>Marcelo O. Mendes</Company>
     <Product>Cardinal.ClickSign</Product>
     <Copyright>Marcelo O. Mendes</Copyright>
-    <PackageReleaseNotes>Publicação inicial.</PackageReleaseNotes>
+    <PackageReleaseNotes>Adicionados dados do repositório do projeto.</PackageReleaseNotes>
     <PackageLicenseFile>License.md</PackageLicenseFile>
     <Description>Biblioteca de extensão para o serviço clicksign em WebApis.</Description>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Cardinal.snk</AssemblyOriginatorKeyFile>
+    <PackageProjectUrl>https://github.com/kandrakah/Cardinal.ClickSign</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kandrakah/Cardinal.ClickSign</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>clicksign, assinatura, jurídico, C#, .net standard</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
