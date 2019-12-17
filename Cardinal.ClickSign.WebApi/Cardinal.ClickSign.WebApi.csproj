@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Cardinal.ClickSign</RootNamespace>
+    <Version>1.0.1.9238</Version>
+    <PackageId>Cardinal.ClickSign.WebApi</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Marcelo O. Mendes</Authors>
+    <Company>Marcelo O. Mendes</Company>
+    <Product>Cardinal.ClickSign</Product>
+    <Copyright>Marcelo O. Mendes</Copyright>
+    <PackageReleaseNotes>Publicação inicial.</PackageReleaseNotes>
+    <PackageLicenseFile>License.md</PackageLicenseFile>
+    <Description>Biblioteca de extensão para o serviço clicksign em WebApis.</Description>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Cardinal.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Cardinal.ClickSign.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Cardinal.ClickSign.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cardinal.ClickSign" Version="1.0.1.9238" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="License.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Cardinal.snk</AssemblyOriginatorKeyFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Marcelo O. Mendes</Authors>
+    <Company>Marcelo O. Mendes</Company>
+    <Product>Cardinal.ClickSign</Product>
+    <Description>Biblioteca de acesso à api do serviço de assinatura de documentos online ClickSign baseada em .Net Standard 2.0.</Description>
+    <Version>1.0.1.9238</Version>
+    <LangVersion>latest</LangVersion>
+    <PackageReleaseNotes>Adicionado método para buscar todos os documentos do serviço; Adicionado método para envio de notificações de forma síncrona.</PackageReleaseNotes>
+    <Copyright>Marcelo O. Mendes</Copyright>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>    
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Cardinal.ClickSign.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Cardinal.ClickSign.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Tiny.RestClient" Version="1.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>    
+  </ItemGroup>
+
+</Project>

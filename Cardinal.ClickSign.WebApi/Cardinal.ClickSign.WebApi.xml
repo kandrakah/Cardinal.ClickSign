@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cardinal.ClickSign.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Cardinal.ClickSign.Extensions.ConfigurationSectionExtensions">
+            <summary>
+            Classe de extensões de <see cref="T:Microsoft.Extensions.Configuration.IConfigurationSection"/>.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Extensions.ConfigurationSectionExtensions.GetSettings``1(Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <summary>
+            Método de extensão para obter um objeto de configurações.
+            </summary>
+            <typeparam name="T">Objeto de configurações desejado.</typeparam>
+            <param name="section">Instância do container de configurações.</param>
+            <returns>Objeto de configurações.</returns>
+        </member>
+        <member name="T:Cardinal.ClickSign.Extensions.IServiceCollectionExtensions">
+            <summary>
+            Classe de extensões para <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Extensions.IServiceCollectionExtensions.AddClickSignService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Extensão que adiciona o serviço de assinaturas de documentos ClickSign.
+            </summary>
+            <param name="services">Instância do container de serviços.</param>
+        </member>
+        <member name="T:Cardinal.ClickSign.ClickSignService">
+            <summary>
+            Implementação do serviço ClickSign.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.ClickSignService.Client">
+            <summary>
+            Client para os serviços ClickSign.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Método construtor.
+            </summary>
+            <param name="configuration">Container de configurações da WebApi.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.Upload(Cardinal.ClickSign.Models.UploadRequest)">
+            <summary>
+            Método que efetua o envio de um novo documento para assinatura no serviço.
+            </summary>
+            <param name="request">Requisição de upload de novo arquivo. <see cref="T:Cardinal.ClickSign.Models.UploadRequest"/></param>
+            <returns>Dados do documento criado no ambiente.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.UploadAsync(Cardinal.ClickSign.Models.UploadRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua o envio de um novo documento para assinatura no serviço de forma assíncrona.
+            </summary>
+            <param name="request">Requisição de upload de novo arquivo. <see cref="T:Cardinal.ClickSign.Models.UploadRequest"/></param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento criado no ambiente.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.Get">
+            <summary>
+            Método que efetua a busca de todos os documentos.
+            </summary>
+            <returns>Lista contendo os dados de todos os documentos do serviço.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.GetAsync(System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a busca de todos os documentos de forma assíncrona.
+            </summary>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Lista contendo os dados de todos os documentos do serviço.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.Get(System.Guid)">
+            <summary>
+            Método que efetua a busca de um documento previamente cadastrado no serviço.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.GetAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a busca de um documento previamente cadastrado no serviço de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.Finalize(System.Guid)">
+            <summary>
+            Método que efetua a finalização de um documento ativo.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.FinalizeAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a finalização de um documento ativo de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.Cancel(System.Guid)">
+            <summary>
+            Método que efetua o cancelamento de um documento ativo.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.CancelAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua o cancelamento de um documento ativo de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.Duplicate(System.Guid)">
+            <summary>
+            Método que efetua a duplicação de um documento ativo.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <returns>Dados do documento duplicado. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.DuplicateAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a duplicação de um documento ativo de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento duplicado. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.GetSigner(System.Guid)">
+            <summary>
+            Método que traz os dados de um determinado assinante.
+            </summary>
+            <param name="key">Chave única do assinante.</param>
+            <returns>Dados do assinante referentes à chave informada. <see cref="T:Cardinal.ClickSign.Models.Signer"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.GetSignerAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que traz os dados de um determinado assinante de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do assinante.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do assinante referentes à chave informada. Veja <see cref="T:Cardinal.ClickSign.Models.Signer"/>.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.CreateSigner(Cardinal.ClickSign.Models.CreateSignerRequest)">
+            <summary>
+            Método que efetua o cadastro de um novo assinante.
+            </summary>
+            <param name="request">Dados de requisição de criação do novo assinante. <see cref="T:Cardinal.ClickSign.Models.CreateSignerRequest"/></param>
+            <returns>Dados do assinante recém criado. <see cref="T:Cardinal.ClickSign.Models.Signer"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.CreateSignerAsync(Cardinal.ClickSign.Models.CreateSignerRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua o cadastro de um novo assinante de forma assíncrona.
+            </summary>
+            <param name="request">Dados de requisição de criação do novo assinante. <see cref="T:Cardinal.ClickSign.Models.CreateSignerRequest"/></param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do assinante recém criado. <see cref="T:Cardinal.ClickSign.Models.Signer"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.AddSignerToDocument(Cardinal.ClickSign.Models.AddSignerRequest)">
+            <summary>
+            Método que efetua a associação de um assinante à um documento à ser assinado.
+            </summary>
+            <param name="request">Dados da requisição de adição de assinante ao documento. <see cref="T:Cardinal.ClickSign.Models.AddSignerRequest"/></param>
+            <returns>Resposta da adição do assinante ao documento. <see cref="T:Cardinal.ClickSign.Models.AddSignerResponse"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.AddSignerToDocumentAsync(Cardinal.ClickSign.Models.AddSignerRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a associação de um assinante à um documento à ser assinado de forma assíncrona.
+            </summary>
+            <param name="request">Dados da requisição de adição de assinante ao documento. <see cref="T:Cardinal.ClickSign.Models.AddSignerRequest"/></param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Resposta da adição do assinante ao documento. <see cref="T:Cardinal.ClickSign.Models.AddSignerResponse"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.RemoveSignerFromDocument(System.Guid)">
+            <summary>
+            Método que efetua a remoção de um assinante de um documento.
+            </summary>
+            <param name="key">Chave da associação do assinante ao documento.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.RemoveSignerFromDocumentAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a remoção de um assinante de um documento de forma assíncrona. 
+            </summary>
+            <param name="key">Chave da associação do assinante ao documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Tarefa assíncrona.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.CreateBatch(Cardinal.ClickSign.Models.BatchRequest)">
+            <summary>
+            Método que cria uma assinatura em lotes de documentos com um assinante em comum.
+            </summary>
+            <param name="request">Dados da requisição de criação da assinatura em lotes. Veja <see cref="T:Cardinal.ClickSign.Models.BatchRequest"/></param>
+            <returns>Dados da assinatura em lotes criada. Veja <see cref="T:Cardinal.ClickSign.Models.BatchResponse"/>.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.CreateBatchAsync(Cardinal.ClickSign.Models.BatchRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que cria uma assinatura em lotes de documentos com um assinante em comum de forma assíncrona.
+            </summary>
+            <param name="request">Dados da requisição de criação da assinatura em lotes. Veja <see cref="T:Cardinal.ClickSign.Models.BatchRequest"/>.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados da assinatura em lotes criada. Veja <see cref="T:Cardinal.ClickSign.Models.BatchResponse"/>.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.SendNotification(Cardinal.ClickSign.Models.NotificationRequest)">
+            <summary>
+            Método que efetua o envio de um lembrete de assinatura de um documento.
+            </summary>
+            <param name="request">Dados da requisição de envio de notificação. Veja <see cref="T:Cardinal.ClickSign.Models.NotificationRequest"/>.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.ClickSignService.SendNotificationAsync(Cardinal.ClickSign.Models.NotificationRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua o envio de um lembrete de assinatura de um documento de forma assíncrona.
+            </summary>
+            <param name="request">Dados da requisição de envio de notificação. Veja <see cref="T:Cardinal.ClickSign.Models.NotificationRequest"/>.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Tarefa assíncrona.</returns>
+        </member>
+        <member name="T:Cardinal.ClickSign.IClickSignService">
+            <summary>
+            Interface do serviço ClickSign.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.Upload(Cardinal.ClickSign.Models.UploadRequest)">
+            <summary>
+            Método que efetua o envio de um novo documento para assinatura no serviço.
+            </summary>
+            <param name="request">Requisição de upload de novo arquivo. <see cref="T:Cardinal.ClickSign.Models.UploadRequest"/></param>
+            <returns>Dados do documento criado no ambiente.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.UploadAsync(Cardinal.ClickSign.Models.UploadRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua o envio de um novo documento para assinatura no serviço de forma assíncrona.
+            </summary>
+            <param name="request">Requisição de upload de novo arquivo. <see cref="T:Cardinal.ClickSign.Models.UploadRequest"/></param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento criado no ambiente.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.Get">
+            <summary>
+            Método que efetua a busca de todos os documentos.
+            </summary>
+            <returns>Lista contendo os dados de todos os documentos do serviço.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.GetAsync(System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a busca de todos os documentos de forma assíncrona.
+            </summary>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Lista contendo os dados de todos os documentos do serviço.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.Get(System.Guid)">
+            <summary>
+            Método que efetua a busca de um documento previamente cadastrado no serviço.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.GetAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a busca de um documento previamente cadastrado no serviço de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.Finalize(System.Guid)">
+            <summary>
+            Método que efetua a finalização de um documento ativo.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.FinalizeAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a finalização de um documento ativo de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.Cancel(System.Guid)">
+            <summary>
+            Método que efetua o cancelamento de um documento ativo.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.CancelAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua o cancelamento de um documento ativo de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento associado à chave informada. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.Duplicate(System.Guid)">
+            <summary>
+            Método que efetua a duplicação de um documento ativo.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <returns>Dados do documento duplicado. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.DuplicateAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a duplicação de um documento ativo de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do documento duplicado. <see cref="T:Cardinal.ClickSign.Models.Document"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.GetSigner(System.Guid)">
+            <summary>
+            Método que traz os dados de um determinado assinante.
+            </summary>
+            <param name="key">Chave única do assinante.</param>
+            <returns>Dados do assinante referentes à chave informada. <see cref="T:Cardinal.ClickSign.Models.Signer"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.GetSignerAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que traz os dados de um determinado assinante de forma assíncrona.
+            </summary>
+            <param name="key">Chave única do assinante.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do assinante referentes à chave informada. Veja <see cref="T:Cardinal.ClickSign.Models.Signer"/>.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.CreateSigner(Cardinal.ClickSign.Models.CreateSignerRequest)">
+            <summary>
+            Método que efetua o cadastro de um novo assinante.
+            </summary>
+            <param name="request">Dados de requisição de criação do novo assinante. <see cref="T:Cardinal.ClickSign.Models.CreateSignerRequest"/></param>
+            <returns>Dados do assinante recém criado. <see cref="T:Cardinal.ClickSign.Models.Signer"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.CreateSignerAsync(Cardinal.ClickSign.Models.CreateSignerRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua o cadastro de um novo assinante de forma assíncrona.
+            </summary>
+            <param name="request">Dados de requisição de criação do novo assinante. <see cref="T:Cardinal.ClickSign.Models.CreateSignerRequest"/></param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados do assinante recém criado. <see cref="T:Cardinal.ClickSign.Models.Signer"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.AddSignerToDocument(Cardinal.ClickSign.Models.AddSignerRequest)">
+            <summary>
+            Método que efetua a associação de um assinante à um documento à ser assinado.
+            </summary>
+            <param name="request">Dados da requisição de adição de assinante ao documento. <see cref="T:Cardinal.ClickSign.Models.AddSignerRequest"/></param>
+            <returns>Resposta da adição do assinante ao documento. <see cref="T:Cardinal.ClickSign.Models.AddSignerResponse"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.AddSignerToDocumentAsync(Cardinal.ClickSign.Models.AddSignerRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a associação de um assinante à um documento à ser assinado de forma assíncrona.
+            </summary>
+            <param name="request">Dados da requisição de adição de assinante ao documento. <see cref="T:Cardinal.ClickSign.Models.AddSignerRequest"/></param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Resposta da adição do assinante ao documento. <see cref="T:Cardinal.ClickSign.Models.AddSignerResponse"/></returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.RemoveSignerFromDocument(System.Guid)">
+            <summary>
+            Método que efetua a remoção de um assinante de um documento.
+            </summary>
+            <param name="key">Chave da associação do assinante ao documento.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.RemoveSignerFromDocumentAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua a remoção de um assinante de um documento de forma assíncrona. 
+            </summary>
+            <param name="key">Chave da associação do assinante ao documento.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Tarefa assíncrona.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.CreateBatch(Cardinal.ClickSign.Models.BatchRequest)">
+            <summary>
+            Método que cria uma assinatura em lotes de documentos com um assinante em comum.
+            </summary>
+            <param name="request">Dados da requisição de criação da assinatura em lotes. Veja <see cref="T:Cardinal.ClickSign.Models.BatchRequest"/></param>
+            <returns>Dados da assinatura em lotes criada. Veja <see cref="T:Cardinal.ClickSign.Models.BatchResponse"/>.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.CreateBatchAsync(Cardinal.ClickSign.Models.BatchRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que cria uma assinatura em lotes de documentos com um assinante em comum de forma assíncrona.
+            </summary>
+            <param name="request">Dados da requisição de criação da assinatura em lotes. Veja <see cref="T:Cardinal.ClickSign.Models.BatchRequest"/>.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Dados da assinatura em lotes criada. Veja <see cref="T:Cardinal.ClickSign.Models.BatchResponse"/>.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.SendNotification(Cardinal.ClickSign.Models.NotificationRequest)">
+            <summary>
+            Método que efetua o envio de um lembrete de assinatura de um documento.
+            </summary>
+            <param name="request">Dados da requisição de envio de notificação. Veja <see cref="T:Cardinal.ClickSign.Models.NotificationRequest"/>.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.IClickSignService.SendNotificationAsync(Cardinal.ClickSign.Models.NotificationRequest,System.Threading.CancellationToken)">
+            <summary>
+            Método que efetua o envio de um lembrete de assinatura de um documento.
+            </summary>
+            <param name="request">Dados da requisição de envio de notificação. Veja <see cref="T:Cardinal.ClickSign.Models.NotificationRequest"/>.</param>
+            <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
+            <returns>Tarefa assíncrona.</returns>
+        </member>
+        <member name="T:Cardinal.ClickSign.Settings.ClickSignSettings">
+            <summary>
+            Classe com as configurações do serviço.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Settings.ClickSignSettings.ApiKey">
+            <summary>
+            Chave de API para acesso ao serviço.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Settings.ClickSignSettings.Environment">
+            <summary>
+            Ambiente à ser utilizado no serviço. Veja <see cref="T:Cardinal.ClickSign.Enumerators.ApiEnvironment"/>.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Settings.ClickSignSettings.Version">
+            <summary>
+            Versão do serviço à ser utilizado. Veja <see cref="T:Cardinal.ClickSign.Enumerators.ApiVersion"/>.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Settings.ClickSignSettings.#ctor">
+            <summary>
+            Método construtor.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Settings.ClickSignSettings.ToString">
+            <summary>
+            Método que traz uma cadeia de caracteres que representa o objeto atual.
+            </summary>
+            <returns>Cadeia de caracteres que representa o objeto atual.</returns>
+        </member>
+    </members>
+</doc>
