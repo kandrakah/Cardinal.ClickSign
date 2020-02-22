@@ -1,7 +1,7 @@
 ﻿/*
 The MIT License (MIT)
 
-Copyright (c) Marcelo O. Mendes
+Copyright (c) 2019 - Marcelo O. Mendes
 
 All rights reserved.
 
@@ -24,35 +24,32 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Cardinal.ClickSign.Extensions
+namespace Cardinal.ClickSign.Enumerators
 {
     /// <summary>
-    /// Classe de extensões para <see cref="IServiceCollection"/>.
+    /// Enumerador com os tipos de status de validação.
     /// </summary>
-    public static class IServiceCollectionExtensions
+    public enum SignatureValidationStatus
     {
         /// <summary>
-        /// Extensão que adiciona o serviço de assinaturas de documentos ClickSign.
+        /// Desconhecido.
         /// </summary>
-        /// <param name="services">Instância do container de serviços.</param>
-        public static IServiceCollection AddClickSignService(this IServiceCollection services)
-        {
-            services.AddScoped<IClickSignService, ClickSignService>();
-            return services;
-        }
+        Unknow,
 
         /// <summary>
-        /// Extensão que adiciona o serviço de webhook à API.
+        /// Conferido.
         /// </summary>
-        /// <typeparam name="TService">Implementação do serviço de webhook.</typeparam>
-        /// <param name="services">Instância do container de serviços.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddWebhookService<TService>(this IServiceCollection services) where TService : IWebhookService
-        {
-            services.AddScoped(typeof(IWebhookService), typeof(TService));
-            return services;
-        }
+        Conferred,
+
+        /// <summary>
+        /// CPF não encontrato.
+        /// </summary>
+        CpfNotFound,
+
+        /// <summary>
+        /// CPF divergente.
+        /// </summary>
+        Divergent
     }
 }

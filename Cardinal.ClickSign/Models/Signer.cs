@@ -101,6 +101,12 @@ namespace Cardinal.ClickSign.Models
         public ICollection<AuthType> Auths { get; set; }
 
         /// <summary>
+        /// Tipo de autenticação para realizar assinatura.
+        /// </summary>
+        [JsonProperty("signature")]
+        public Signature Signature { get; set; }
+
+        /// <summary>
         /// Método construtor.
         /// </summary>
         public Signer()

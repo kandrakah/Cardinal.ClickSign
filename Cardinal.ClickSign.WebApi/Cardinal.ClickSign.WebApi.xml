@@ -4,6 +4,64 @@
         <name>Cardinal.ClickSign.WebApi</name>
     </assembly>
     <members>
+        <member name="T:Cardinal.ClickSign.Controllers.WebhookController">
+            <summary>
+            Classe de controle para atendimento de requisições de webhook.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Controllers.WebhookController.Service">
+            <summary>
+            Instância do serviço de webhook.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Controllers.WebhookController.HMacKey">
+            <summary>
+            Chave HMAC para validação da requisição webhook.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Controllers.WebhookController.#ctor(System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Método construtor.
+            </summary>
+            <param name="services">Instância do container de serviços.</param>
+            <param name="configuration">Instância do container de configurações.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.Controllers.WebhookController.Post(Cardinal.ClickSign.Models.WebhookRequest)">
+            <summary>
+            Método que receberá as requisições do webhook.
+            </summary>
+            <param name="request">Dados da requisição.</param>
+            <returns>Resposta da requisição. Veja <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/></returns>
+        </member>
+        <member name="T:Cardinal.ClickSign.Exceptions.WebhookNotEnabledException">
+            <summary>
+            Exceção ligada ao serviço de webhook não estar habilitado.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Exceptions.WebhookNotEnabledException.#ctor">
+            <summary>
+            Método construtor.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Exceptions.WebhookNotEnabledException.#ctor(System.String)">
+            <summary>
+            Método construtor.
+            </summary>
+            <param name="message">Mensagem à ser definida na excessão.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.Exceptions.WebhookNotEnabledException.#ctor(System.Exception)">
+            <summary>
+            Método construtor.
+            </summary>
+            <param name="innerException">Excessão que causou a falha.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.Exceptions.WebhookNotEnabledException.#ctor(System.String,System.Exception)">
+            <summary>
+            Método construtor.
+            </summary>
+            <param name="message">Mensagem à ser definida na excessão.</param>
+            <param name="innerException">Excessão que causou a falha.</param>
+        </member>
         <member name="T:Cardinal.ClickSign.Extensions.ConfigurationSectionExtensions">
             <summary>
             Classe de extensões de <see cref="T:Microsoft.Extensions.Configuration.IConfigurationSection"/>.
@@ -17,6 +75,18 @@
             <param name="section">Instância do container de configurações.</param>
             <returns>Objeto de configurações.</returns>
         </member>
+        <member name="T:Cardinal.ClickSign.Extensions.HttpRequestExtensions">
+            <summary>
+            Classe de extensões de <see cref="T:Cardinal.ClickSign.Extensions.HttpRequestExtensions"/>.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Extensions.HttpRequestExtensions.GetWebhookData(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Método que obtém os dados à serem validados via hmac.
+            </summary>
+            <param name="request">Dados da requisição recebida.</param>
+            <returns>Dados da requisição para validação. Veja <see cref="T:Cardinal.ClickSign.Security.WebhookData"/></returns>
+        </member>
         <member name="T:Cardinal.ClickSign.Extensions.IServiceCollectionExtensions">
             <summary>
             Classe de extensões para <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
@@ -27,6 +97,14 @@
             Extensão que adiciona o serviço de assinaturas de documentos ClickSign.
             </summary>
             <param name="services">Instância do container de serviços.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.Extensions.IServiceCollectionExtensions.AddWebhookService``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Extensão que adiciona o serviço de webhook à API.
+            </summary>
+            <typeparam name="TService">Implementação do serviço de webhook.</typeparam>
+            <param name="services">Instância do container de serviços.</param>
+            <returns></returns>
         </member>
         <member name="T:Cardinal.ClickSign.ClickSignService">
             <summary>
@@ -220,6 +298,17 @@
             <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
             <returns>Tarefa assíncrona.</returns>
         </member>
+        <member name="T:Cardinal.ClickSign.DefaultWebhookService">
+            <summary>
+            Implementação padrão do webhook.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.DefaultWebhookService.Handle(Cardinal.ClickSign.Models.WebhookRequest)">
+            <summary>
+            Método que faz a tratativa da requisição recebida.
+            </summary>
+            <param name="request">Requisição recebida.</param>
+        </member>
         <member name="T:Cardinal.ClickSign.IClickSignService">
             <summary>
             Interface do serviço ClickSign.
@@ -401,6 +490,17 @@
             <param name="cancellationToken">Token de notificação de cancelamento de threads gerenciadas.</param>
             <returns>Tarefa assíncrona.</returns>
         </member>
+        <member name="T:Cardinal.ClickSign.IWebhookService">
+            <summary>
+            Interface para implementação do serviço de webhook.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.IWebhookService.Handle(Cardinal.ClickSign.Models.WebhookRequest)">
+            <summary>
+            Método que faz a tratativa da requisição recebida.
+            </summary>
+            <param name="request">Requisição recebida.</param>
+        </member>
         <member name="T:Cardinal.ClickSign.Settings.ClickSignSettings">
             <summary>
             Classe com as configurações do serviço.
@@ -419,6 +519,11 @@
         <member name="P:Cardinal.ClickSign.Settings.ClickSignSettings.Version">
             <summary>
             Versão do serviço à ser utilizado. Veja <see cref="T:Cardinal.ClickSign.Enumerators.ApiVersion"/>.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Settings.ClickSignSettings.WebhookKey">
+            <summary>
+            Chave HMAC para validação webhook.
             </summary>
         </member>
         <member name="M:Cardinal.ClickSign.Settings.ClickSignSettings.#ctor">

@@ -66,7 +66,24 @@ namespace Cardinal.ClickSign.Models
         /// </summary>
         [JsonConverter(typeof(LocalesConverter))]
         [JsonProperty("locale")]
-        public Locales Locale { get; set; } 
+        public Locales Locale { get; set; }
+
+        /// <summary>
+        /// Determina se o documento terá a funcionalidade de ordenação de assinaturas ativada.
+        /// 
+        /// Ao Adicionar signatário a documento deverá definir o grupo pertencente.
+        /// </summary>
+        [JsonProperty("sequence_enabled")]
+        public bool SequenceEnabled { get; set; }
+
+        /// <summary>
+        /// Determina se o documento terá opção de lembretes automáticos ativada. O intervalo é medido em dias.
+        /// Com a inclusão do parâmetro serão enviados até três lembretes automaticamente.
+        /// 
+        /// Intervalos suportados: 1; 2; 3; 7; 14.
+        /// </summary>
+        [JsonProperty("remind_interval")]
+        public int RemindInterval { get; set; }
 
         /// <summary>
         /// Método construtor.

@@ -1,7 +1,7 @@
 ﻿/*
 The MIT License (MIT)
 
-Copyright (c) Marcelo O. Mendes
+Copyright (c) 2019 - Marcelo O. Mendes
 
 All rights reserved.
 
@@ -24,35 +24,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
-namespace Cardinal.ClickSign.Extensions
+namespace Cardinal.ClickSign.Models
 {
     /// <summary>
-    /// Classe de extensões para <see cref="IServiceCollection"/>.
+    /// Classe que representa uma requisição webhook.
     /// </summary>
-    public static class IServiceCollectionExtensions
+    public class WebhookRequest
     {
         /// <summary>
-        /// Extensão que adiciona o serviço de assinaturas de documentos ClickSign.
+        /// Dados do evento reportado
         /// </summary>
-        /// <param name="services">Instância do container de serviços.</param>
-        public static IServiceCollection AddClickSignService(this IServiceCollection services)
-        {
-            services.AddScoped<IClickSignService, ClickSignService>();
-            return services;
-        }
+        [JsonProperty("event")]
+        public Event Event { get; set; }
 
         /// <summary>
-        /// Extensão que adiciona o serviço de webhook à API.
+        /// Dados do documento associado ao evento.
         /// </summary>
-        /// <typeparam name="TService">Implementação do serviço de webhook.</typeparam>
-        /// <param name="services">Instância do container de serviços.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddWebhookService<TService>(this IServiceCollection services) where TService : IWebhookService
+        [JsonProperty("document")]
+        public Document Document { get; set; }
+
+        /// <summary>
+        /// Método que traz uma cadeia de caracteres que representa o objeto atual.
+        /// </summary>
+        /// <returns>Cadeia de caracteres que representa o objeto atual.</returns>
+        public override string ToString()
         {
-            services.AddScoped(typeof(IWebhookService), typeof(TService));
-            return services;
+            return $"[DOCUMENT:{this.Document.Key}][EVENT:{this.Event.Name}][OCCURRENCE:{this.Event.Occurred}]";
         }
     }
 }

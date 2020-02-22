@@ -1,7 +1,7 @@
 ﻿/*
 The MIT License (MIT)
 
-Copyright (c) 2019 - Marcelo O. Mendes
+Copyright (c) Marcelo O. Mendes
 
 All rights reserved.
 
@@ -26,29 +26,10 @@ SOFTWARE.
 
 namespace Cardinal.ClickSign.Enumerators
 {
-    /// <summary>
-    /// Enumerador com os tipos de autenticação disponíveis no serviço.
-    /// </summary>
-    public enum AuthType
+    internal enum SettingsProvider
     {
-        /// <summary>
-        /// Envio de token por e-mail
-        /// </summary>
-        Email,
-
-        /// <summary>
-        /// Envio de token por SMS
-        /// </summary>
-        Sms,
-
-        /// <summary>
-        /// Envio de token por Whatsapp
-        /// </summary>
-        WhatsApp,
-        
-        /// <summary>
-        /// Assinatura via API
-        /// </summary>
-        Api
+        None,
+        Json,
+        Source        
     }
 }

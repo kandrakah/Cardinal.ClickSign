@@ -50,6 +50,11 @@ namespace Cardinal.ClickSign.Settings
         public ApiVersion Version { get; set; }
 
         /// <summary>
+        /// Chave HMAC para validação webhook.
+        /// </summary>
+        public string WebhookKey { get; set; }
+
+        /// <summary>
         /// Método construtor.
         /// </summary>
         public ClickSignSettings()

@@ -1,7 +1,7 @@
 ﻿/*
 The MIT License (MIT)
 
-Copyright (c) 2019 - Marcelo O. Mendes
+Copyright (c) Marcelo O. Mendes
 
 All rights reserved.
 
@@ -24,31 +24,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-namespace Cardinal.ClickSign.Enumerators
+using Cardinal.ClickSign.Enumerators;
+using Cardinal.ClickSign.Settings;
+
+namespace Cardinal.ClickSign
 {
-    /// <summary>
-    /// Enumerador com os tipos de autenticação disponíveis no serviço.
-    /// </summary>
-    public enum AuthType
+    internal class CardinalConstants
     {
-        /// <summary>
-        /// Envio de token por e-mail
-        /// </summary>
-        Email,
+        internal static SettingsProvider SettingsProvider { get; set; }
 
-        /// <summary>
-        /// Envio de token por SMS
-        /// </summary>
-        Sms,
-
-        /// <summary>
-        /// Envio de token por Whatsapp
-        /// </summary>
-        WhatsApp,
-        
-        /// <summary>
-        /// Assinatura via API
-        /// </summary>
-        Api
+        internal static ClickSignSettings Settings { get; set; }
     }
 }

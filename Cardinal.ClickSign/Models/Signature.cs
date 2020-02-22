@@ -32,36 +32,67 @@ using System;
 namespace Cardinal.ClickSign.Models
 {
     /// <summary>
-    /// Classe que representa um evento recebido.
+    /// Classe de modelo com os dados de uma assinantura.
     /// </summary>
-    public class Event
+    public class Signature
     {
         /// <summary>
-        /// Nome do evento.
+        /// Nome do assinante.
         /// </summary>
         [JsonProperty("name")]
-        [JsonConverter(typeof(EventTypeConverter))]
-        public EventType Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Data em que o evento ocorreu.
+        /// Email do assinante.
         /// </summary>
-        [JsonProperty("occurred_at")]
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Data de nascimento do assinante.
+        /// </summary>
+        [JsonProperty("birthday")]
+        public DateTime Birthday { get; set; }
+
+        /// <summary>
+        /// Número do documento do assinante.
+        /// </summary>
+        [JsonProperty("documentation")]
+        public string Documentation { get; set; }
+
+        /// <summary>
+        /// Endereço IP do assinante.
+        /// </summary>
+        [JsonProperty("ip_address")]
+        public string IpAddress { get; set; }
+
+        /// <summary>
+        /// Data de assinatura.
+        /// </summary>
         [JsonConverter(typeof(DateFormatConverter), "yyyy-MM-ddTHH:mm:ss")]
-        public DateTime Occurred { get; set; }
+        [JsonProperty("signed_at")]
+        public DateTime SignedAt { get; set; }
 
         /// <summary>
-        /// Dados do evento ocorrido. <see cref="EventData"/>
+        /// A que título será realizada a assinatura. Veja <see cref="SignType"/>.
         /// </summary>
-        public EventData Data { get; set; }
-        
+        [JsonConverter(typeof(SignTypeConverter))]
+        [JsonProperty("sign_as")]
+        public SignType SignAs { get; set; }
+
+        /// <summary>
+        /// Dados de validação do assinante.
+        /// </summary>
+        [JsonProperty("validation")]
+        public SignatureValidation Validation { get; set; }
+
         /// <summary>
         /// Método que traz uma cadeia de caracteres que representa o objeto atual.
         /// </summary>
         /// <returns>Cadeia de caracteres que representa o objeto atual.</returns>
         public override string ToString()
         {
-            return $"[NAME:{this.Name}][OCCURREDAT:{this.Occurred.ToString("dd/MM/yyyy HH:mm:ss")}]";
+            return $"[NAME:{this.Name}][DOCUMENTATION:{this.Documentation}][IP:{this.IpAddress}][SIGN.AS:{this.SignAs}][SIGNED.AT:{this.SignedAt}][STATUS:{this.Validation?.Status}]";
         }
     }
 }

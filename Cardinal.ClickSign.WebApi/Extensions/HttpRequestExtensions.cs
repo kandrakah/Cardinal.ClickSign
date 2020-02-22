@@ -24,35 +24,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using Microsoft.Extensions.DependencyInjection;
+using Cardinal.ClickSign.Security;
+using Microsoft.AspNetCore.Http;
+using System.Linq;
 
 namespace Cardinal.ClickSign.Extensions
 {
     /// <summary>
-    /// Classe de extensões para <see cref="IServiceCollection"/>.
+    /// Classe de extensões de <see cref="HttpRequestExtensions"/>.
     /// </summary>
-    public static class IServiceCollectionExtensions
+    public static class HttpRequestExtensions
     {
-        /// <summary>
-        /// Extensão que adiciona o serviço de assinaturas de documentos ClickSign.
-        /// </summary>
-        /// <param name="services">Instância do container de serviços.</param>
-        public static IServiceCollection AddClickSignService(this IServiceCollection services)
-        {
-            services.AddScoped<IClickSignService, ClickSignService>();
-            return services;
-        }
+        private const string HMACHeaderName = "Content-Hmac";
+
+        private const string AlgorythmName = "sha256=";
 
         /// <summary>
-        /// Extensão que adiciona o serviço de webhook à API.
+        /// Método que obtém os dados à serem validados via hmac.
         /// </summary>
-        /// <typeparam name="TService">Implementação do serviço de webhook.</typeparam>
-        /// <param name="services">Instância do container de serviços.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddWebhookService<TService>(this IServiceCollection services) where TService : IWebhookService
+        /// <param name="request">Dados da requisição recebida.</param>
+        /// <returns>Dados da requisição para validação. Veja <see cref="WebhookData"/></returns>
+        public static WebhookData GetWebhookData(this HttpRequest request)
         {
-            services.AddScoped(typeof(IWebhookService), typeof(TService));
-            return services;
+            var data = new WebhookData()
+            {
+                Body = request.Body,
+                Signature = request.Headers.Where(x => x.Key == HMACHeaderName).Select(x => x.Value).FirstOrDefault().ToString().Replace(AlgorythmName, string.Empty)
+            };
+
+            return data;
         }
     }
 }

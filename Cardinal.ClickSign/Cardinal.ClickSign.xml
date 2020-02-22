@@ -335,6 +335,36 @@
             <param name="value">Objeto à ser traduzido.</param>
             <param name="serializer">Serializador json.</param>
         </member>
+        <member name="T:Cardinal.ClickSign.Converters.EventTypeConverter">
+            <summary>
+            Classe para conversão do enumerador <see cref="T:Cardinal.ClickSign.Enumerators.EventType"/> para json e vice-versa.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Converters.EventTypeConverter.CanConvert(System.Type)">
+            <summary>
+            Método que valida se o tipo informado pode ser convertido.
+            </summary>
+            <param name="objectType">Tipo do objeto à ser convertido.</param>
+            <returns>Verdadeiro caso o objeto possa ser convertido e falso caso contrário.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.Converters.EventTypeConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Método que transforma o valor json no objeto referente.
+            </summary>
+            <param name="reader">Leitor do arquivo json.</param>
+            <param name="objectType">tipo do objeto à ser convertido.</param>
+            <param name="existingValue">Valor existente.</param>
+            <param name="serializer">Serializador json.</param>
+            <returns>Objeto referente ao valor informado.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.Converters.EventTypeConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Método que transforma o objeto em sua representação json referente.
+            </summary>
+            <param name="writer">Escritor do arquivo json.</param>
+            <param name="value">Objeto à ser traduzido.</param>
+            <param name="serializer">Serializador json.</param>
+        </member>
         <member name="T:Cardinal.ClickSign.Converters.LocalesConverter">
             <summary>
             Classe para conversão do enumerador <see cref="T:Cardinal.ClickSign.Enumerators.Locales"/> para json e vice-versa.
@@ -358,6 +388,36 @@
             <returns>Objeto referente ao valor informado.</returns>
         </member>
         <member name="M:Cardinal.ClickSign.Converters.LocalesConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Método que transforma o objeto em sua representação json referente.
+            </summary>
+            <param name="writer">Escritor do arquivo json.</param>
+            <param name="value">Objeto à ser traduzido.</param>
+            <param name="serializer">Serializador json.</param>
+        </member>
+        <member name="T:Cardinal.ClickSign.Converters.SignatureValidationConverter">
+            <summary>
+            Classe para conversão do enumerador <see cref="T:Cardinal.ClickSign.Enumerators.SignatureValidationStatus"/> para json e vice-versa.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Converters.SignatureValidationConverter.CanConvert(System.Type)">
+            <summary>
+            Método que valida se o tipo informado pode ser convertido.
+            </summary>
+            <param name="objectType">Tipo do objeto à ser convertido.</param>
+            <returns>Verdadeiro caso o objeto possa ser convertido e falso caso contrário.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.Converters.SignatureValidationConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Método que transforma o valor json no objeto referente.
+            </summary>
+            <param name="reader">Leitor do arquivo json.</param>
+            <param name="objectType">tipo do objeto à ser convertido.</param>
+            <param name="existingValue">Valor existente.</param>
+            <param name="serializer">Serializador json.</param>
+            <returns>Objeto referente ao valor informado.</returns>
+        </member>
+        <member name="M:Cardinal.ClickSign.Converters.SignatureValidationConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
             <summary>
             Método que transforma o objeto em sua representação json referente.
             </summary>
@@ -435,6 +495,11 @@
             Envio de token por SMS
             </summary>
         </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.AuthType.WhatsApp">
+            <summary>
+            Envio de token por Whatsapp
+            </summary>
+        </member>
         <member name="F:Cardinal.ClickSign.Enumerators.AuthType.Api">
             <summary>
             Assinatura via API
@@ -475,6 +540,66 @@
              Documento cancelado
             </summary>
         </member>
+        <member name="T:Cardinal.ClickSign.Enumerators.EventType">
+            <summary>
+            Enumerador com os tipos de eventos que podem ocorrer.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.Unknow">
+            <summary>
+            Ocorre quando o evento é desconhecido.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.Upload">
+            <summary>
+            Ocorre quando é realizado o upload de um documento.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.AddSigner">
+            <summary>
+            Ocorre quando são adicionados signatários a um documento.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.RemoveSigner">
+            <summary>
+            Ocorre quando são removidos signatários de um documento.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.Sign">
+            <summary>
+            Ocorre quando um signatário assina um documento.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.Close">
+            <summary>
+            Ocorre quando um documento é finalizado manualmente.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.AutoClose">
+            <summary>
+            Ocorre quando um documento é finalizado automaticamente logo após a última assinatura.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.Deadline">
+            <summary>
+            Ocorre quando a data limite de assinatura de um documento for atingida. Se o documento contiver ao menos uma assinatura, ele é finalizado. Caso contrário, o documento é cancelado.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.Cancel">
+            <summary>
+            Ocorre quando um documento é cancelado manualmente.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.UpdateDeadline">
+            <summary>
+            Ocorre quando a data limite de assinatura de um documento é alterada.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.EventType.UpdateAutoClose">
+            <summary>
+            Ocorre quando a opção de finalização automática de um documento é alterada.
+            </summary>
+        </member>
         <member name="T:Cardinal.ClickSign.Enumerators.Locales">
             <summary>
             Enumerador com os idiomas disponíveis no serviço.
@@ -503,6 +628,41 @@
         <member name="F:Cardinal.ClickSign.Enumerators.NotificationType.Sms">
             <summary>
             Envio por sms.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.NotificationType.Whatsapp">
+            <summary>
+            Envio por Whatsapp.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.NotificationType.Api">
+            <summary>
+            Envio por API.
+            </summary>
+        </member>
+        <member name="T:Cardinal.ClickSign.Enumerators.SignatureValidationStatus">
+            <summary>
+            Enumerador com os tipos de status de validação.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.SignatureValidationStatus.Unknow">
+            <summary>
+            Desconhecido.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.SignatureValidationStatus.Conferred">
+            <summary>
+            Conferido.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.SignatureValidationStatus.CpfNotFound">
+            <summary>
+            CPF não encontrato.
+            </summary>
+        </member>
+        <member name="F:Cardinal.ClickSign.Enumerators.SignatureValidationStatus.Divergent">
+            <summary>
+            CPF divergente.
             </summary>
         </member>
         <member name="T:Cardinal.ClickSign.Enumerators.SignType">
@@ -627,7 +787,7 @@
         </member>
         <member name="T:Cardinal.ClickSign.Exceptions.ClickSignException">
             <summary>
-            Classe de excessão básica da biblioteca.
+            Classe de exceção básica da biblioteca.
             </summary>
         </member>
         <member name="M:Cardinal.ClickSign.Exceptions.ClickSignException.#ctor">
@@ -722,6 +882,35 @@
             Método que transforma o objeto em sua representação textual (string).
             </summary>
             <returns>Representação textual do objeto.</returns>
+        </member>
+        <member name="T:Cardinal.ClickSign.Exceptions.WebhookUnauthorizedException">
+            <summary>
+            Exceção ligada à não autorização do webhook.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Exceptions.WebhookUnauthorizedException.#ctor">
+            <summary>
+            Método construtor.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Exceptions.WebhookUnauthorizedException.#ctor(System.String)">
+            <summary>
+            Método construtor.
+            </summary>
+            <param name="message">Mensagem à ser definida na excessão.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.Exceptions.WebhookUnauthorizedException.#ctor(System.Exception)">
+            <summary>
+            Método construtor.
+            </summary>
+            <param name="innerException">Excessão que causou a falha.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.Exceptions.WebhookUnauthorizedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Método construtor.
+            </summary>
+            <param name="message">Mensagem à ser definida na excessão.</param>
+            <param name="innerException">Excessão que causou a falha.</param>
         </member>
         <member name="T:Cardinal.ClickSign.Extensions.StreamExtensions">
             <summary>
@@ -1455,6 +1644,78 @@
             </summary>
             <returns>Cadeia de caracteres que representa o objeto atual.</returns>
         </member>
+        <member name="T:Cardinal.ClickSign.Models.Signature">
+            <summary>
+            Classe de modelo com os dados de uma assinantura.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.Signature.Name">
+            <summary>
+            Nome do assinante.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.Signature.Email">
+            <summary>
+            Email do assinante.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.Signature.Birthday">
+            <summary>
+            Data de nascimento do assinante.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.Signature.Documentation">
+            <summary>
+            Número do documento do assinante.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.Signature.IpAddress">
+            <summary>
+            Endereço IP do assinante.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.Signature.SignedAt">
+            <summary>
+            Data de assinatura.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.Signature.SignAs">
+            <summary>
+            A que título será realizada a assinatura. Veja <see cref="T:Cardinal.ClickSign.Enumerators.SignType"/>.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.Signature.Validation">
+            <summary>
+            Dados de validação do assinante.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Models.Signature.ToString">
+            <summary>
+            Método que traz uma cadeia de caracteres que representa o objeto atual.
+            </summary>
+            <returns>Cadeia de caracteres que representa o objeto atual.</returns>
+        </member>
+        <member name="T:Cardinal.ClickSign.Models.SignatureValidation">
+            <summary>
+            Classe de modelo com os dados da validação de uma assinatura.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.SignatureValidation.Status">
+            <summary>
+            Status da validação.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.SignatureValidation.Name">
+            <summary>
+            Nome validado.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Models.SignatureValidation.ToString">
+            <summary>
+            Método que traz uma cadeia de caracteres que representa o objeto atual.
+            </summary>
+            <returns>Cadeia de caracteres que representa o objeto atual.</returns>
+        </member>
         <member name="T:Cardinal.ClickSign.Models.Signer">
             <summary>
             Classe de modelo com os dados de um assinante.
@@ -1510,6 +1771,11 @@
             Tipo de autenticação para realizar assinatura.
             </summary>
         </member>
+        <member name="P:Cardinal.ClickSign.Models.Signer.Signature">
+            <summary>
+            Tipo de autenticação para realizar assinatura.
+            </summary>
+        </member>
         <member name="M:Cardinal.ClickSign.Models.Signer.#ctor">
             <summary>
             Método construtor.
@@ -1551,6 +1817,21 @@
             Localização do documento.
             </summary>
         </member>
+        <member name="P:Cardinal.ClickSign.Models.UploadRequest.SequenceEnabled">
+            <summary>
+            Determina se o documento terá a funcionalidade de ordenação de assinaturas ativada.
+            
+            Ao Adicionar signatário a documento deverá definir o grupo pertencente.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.UploadRequest.RemindInterval">
+            <summary>
+            Determina se o documento terá opção de lembretes automáticos ativada. O intervalo é medido em dias.
+            Com a inclusão do parâmetro serão enviados até três lembretes automaticamente.
+            
+            Intervalos suportados: 1; 2; 3; 7; 14.
+            </summary>
+        </member>
         <member name="M:Cardinal.ClickSign.Models.UploadRequest.#ctor">
             <summary>
             Método construtor.
@@ -1562,26 +1843,75 @@
             </summary>
             <returns>Cadeia de caracteres que representa o objeto atual.</returns>
         </member>
-        <member name="T:Cardinal.ClickSign.Security.HmacSignatureValidator">
+        <member name="T:Cardinal.ClickSign.Models.WebhookRequest">
             <summary>
-            Classe responsável pela validação de assinatura de um vetor de dados vindo de uma requisição Webhook do serviço.
+            Classe que representa uma requisição webhook.
             </summary>
         </member>
-        <member name="M:Cardinal.ClickSign.Security.HmacSignatureValidator.ValidateWebHookRequest(System.Net.Http.HttpRequestMessage,System.String)">
+        <member name="P:Cardinal.ClickSign.Models.WebhookRequest.Event">
+            <summary>
+            Dados do evento reportado
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.WebhookRequest.Document">
+            <summary>
+            Dados do documento associado ao evento.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Models.WebhookRequest.ToString">
+            <summary>
+            Método que traz uma cadeia de caracteres que representa o objeto atual.
+            </summary>
+            <returns>Cadeia de caracteres que representa o objeto atual.</returns>
+        </member>
+        <member name="T:Cardinal.ClickSign.Security.HmacSignatureValidator">
+            <summary>
+            Classe responsável pela validação de assinatura de dados vindos de uma requisição Webhook do serviço.
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Security.HmacSignatureValidator.Validate(Cardinal.ClickSign.Security.WebhookData,System.String)">
             <summary>
             Método que efetua a validação do conteúdo da mensagem de acordo com a assinatura Hmac.
             </summary>
-            <param name="request">Requisição à ser analizada.</param>
-            <param name="hmacKey">Chave Hmac de validação.</param>
-            <returns></returns>
+            <param name="data">dados da requisição à serem validados.</param>
+            <param name="hmacKey">Chave HMAC para validação.</param>
         </member>
-        <member name="M:Cardinal.ClickSign.Security.HmacSignatureValidator.HmacSha256(System.String,System.String)">
+        <member name="M:Cardinal.ClickSign.Security.HmacSignatureValidator.Validate(System.String,System.String,System.String)">
+            <summary>
+            Método que efetua a validação do conteúdo da mensagem de acordo com a assinatura Hmac.
+            </summary>
+            <param name="body">Conteúdo à ser validado.</param>
+            <param name="requestHmac">HMAC enviado juntamente com o conteúdo.</param>
+            <param name="hmacKey">Chave HMAC para validação.</param>
+        </member>
+        <member name="M:Cardinal.ClickSign.Security.HmacSignatureValidator.GenerateHmacSignature(System.String,System.String)">
             <summary>
             Método que faz a geração do valor Hmac de um conjunto de dados.
             </summary>
-            <param name="text">Dados à terem seu valor Hmac gerado.</param>
+            <param name="value">Dados à terem seu valor Hmac gerado.</param>
             <param name="key">Chave de criação.</param>
             <returns>Assinatura Hmac gerada.</returns>
+        </member>
+        <member name="T:Cardinal.ClickSign.Security.WebhookData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Security.WebhookData.Body">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Security.WebhookData.Signature">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Security.WebhookData.ToString">
+            <summary>
+            Método que traz uma cadeia de caracteres que representa o objeto atual.
+            </summary>
+            <returns>Cadeia de caracteres que representa o objeto atual.</returns>
         </member>
         <member name="T:Cardinal.ClickSign.Utils.MimetypeDetector">
             <summary>

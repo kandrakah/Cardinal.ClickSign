@@ -31,9 +31,9 @@ using System;
 namespace Cardinal.ClickSign.Converters
 {
     /// <summary>
-    /// Classe para conversão do enumerador <see cref="AuthType"/> para json e vice-versa.
+    /// Classe para conversão do enumerador <see cref="EventType"/> para json e vice-versa.
     /// </summary>
-    public class AuthTypesConverter : JsonConverter
+    public class EventTypeConverter : JsonConverter
     {
         /// <summary>
         /// Método que valida se o tipo informado pode ser convertido.
@@ -59,16 +59,28 @@ namespace Cardinal.ClickSign.Converters
 
             switch (value)
             {
-                case "email":
-                    return AuthType.Email;
-                case "sms":
-                    return AuthType.Sms;
-                case "whatsapp":
-                    return AuthType.WhatsApp;
-                case "api":
-                    return AuthType.Api;
+                case "upload":
+                    return EventType.Upload;
+                case "add_signer":
+                    return EventType.AddSigner;
+                case "remove_signer":
+                    return EventType.RemoveSigner;
+                case "sign":
+                    return EventType.Sign;
+                case "close":
+                    return EventType.Close;
+                case "auto_close":
+                    return EventType.AutoClose;
+                case "deadline":
+                    return EventType.Deadline;
+                case "cancel":
+                    return EventType.Cancel;
+                case "update_deadline":
+                    return EventType.UpdateDeadline;
+                case "update_auto_close":
+                    return EventType.UpdateAutoClose;
                 default:
-                    return AuthType.Email;
+                    return EventType.Unknow;
             }
         }
 
@@ -80,23 +92,41 @@ namespace Cardinal.ClickSign.Converters
         /// <param name="serializer">Serializador json.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var authType = (AuthType)value;
-            switch (authType)
+            var locale = (EventType)value;
+            switch (locale)
             {
-                case AuthType.Email:
-                    writer.WriteValue("email");
+                case EventType.Upload:
+                    writer.WriteValue("upload");
                     break;
-                case AuthType.Sms:
-                    writer.WriteValue("sms");
+                case EventType.AddSigner:
+                    writer.WriteValue("add_signer");
                     break;
-                case AuthType.WhatsApp:
-                    writer.WriteValue("whatsapp");
+                case EventType.RemoveSigner:
+                    writer.WriteValue("remove_signer");
                     break;
-                case AuthType.Api:
-                    writer.WriteValue("api");
+                case EventType.Sign:
+                    writer.WriteValue("sign");
+                    break;
+                case EventType.Close:
+                    writer.WriteValue("close");
+                    break;
+                case EventType.AutoClose:
+                    writer.WriteValue("auto_close");
+                    break;
+                case EventType.Deadline:
+                    writer.WriteValue("deadline");
+                    break;
+                case EventType.Cancel:
+                    writer.WriteValue("cancel");
+                    break;
+                case EventType.UpdateDeadline:
+                    writer.WriteValue("update_deadline");
+                    break;
+                case EventType.UpdateAutoClose:
+                    writer.WriteValue("update_auto_close");
                     break;
                 default:
-                    writer.WriteValue("email");
+                    writer.WriteValue("unknow");
                     break;
             }
         }

@@ -39,6 +39,16 @@ namespace Cardinal.ClickSign.Enumerators
         /// <summary>
         /// Envio por sms.
         /// </summary>
-        Sms
+        Sms,
+
+        /// <summary>
+        /// Envio por Whatsapp.
+        /// </summary>
+        Whatsapp,
+
+        /// <summary>
+        /// Envio por API.
+        /// </summary>
+        Api
     }
 }

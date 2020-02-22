@@ -92,7 +92,14 @@ namespace Cardinal.ClickSign.Models
         /// <returns>Cadeia de caracteres que representa o objeto atual.</returns>
         public override string ToString()
         {
-            return $"[LOG.VERSION:{this.LogVersion}][AUTO.CLOSE:{this.AutoClose}][LOCALE:{this.Locale}][DEADLINE:{this.Deadline.ToString("yyyy-MM-ddTHH:mm:ss")}]";
+            if (string.IsNullOrEmpty(this.LogVersion))
+            {
+                return $"[AUTO.CLOSE:{ this.AutoClose}][LOCALE:{this.Locale}][DEADLINE:{this.Deadline.ToString("yyyy-MM-ddTHH:mm:ss")}]";
+            }
+            else
+            {
+                return $"[LOG.VERSION:{this.LogVersion}][AUTO.CLOSE:{this.AutoClose}][LOCALE:{this.Locale}][DEADLINE:{this.Deadline.ToString("yyyy-MM-ddTHH:mm:ss")}]";
+            }
         }
     }
 }

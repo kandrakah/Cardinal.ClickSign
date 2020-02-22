@@ -29,7 +29,7 @@ using System;
 namespace Cardinal.ClickSign.Exceptions
 {
     /// <summary>
-    /// Classe de excessão básica da biblioteca.
+    /// Classe de exceção básica da biblioteca.
     /// </summary>
     public class ClickSignException : Exception
     {

@@ -106,7 +106,7 @@ namespace Cardinal.ClickSign.Models
         /// <summary>
         /// Atributo que contém os dados de download do documento. <see cref="Download"/>
         /// </summary>
-        [JsonProperty("download")]
+        [JsonProperty("downloads")]
         public Download Downloads { get; set; }
 
         /// <summary>

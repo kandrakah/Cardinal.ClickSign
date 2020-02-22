@@ -1,7 +1,7 @@
 ﻿/*
 The MIT License (MIT)
 
-Copyright (c) Marcelo O. Mendes
+Copyright (c) 2019 - Marcelo O. Mendes
 
 All rights reserved.
 
@@ -24,35 +24,49 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using Microsoft.Extensions.DependencyInjection;
+using System;
 
-namespace Cardinal.ClickSign.Extensions
+namespace Cardinal.ClickSign.Exceptions
 {
     /// <summary>
-    /// Classe de extensões para <see cref="IServiceCollection"/>.
+    /// Exceção ligada ao serviço de webhook não estar habilitado.
     /// </summary>
-    public static class IServiceCollectionExtensions
+    public class WebhookNotEnabledException : ClickSignException
     {
         /// <summary>
-        /// Extensão que adiciona o serviço de assinaturas de documentos ClickSign.
+        /// Método construtor.
         /// </summary>
-        /// <param name="services">Instância do container de serviços.</param>
-        public static IServiceCollection AddClickSignService(this IServiceCollection services)
+        public WebhookNotEnabledException() : base()
         {
-            services.AddScoped<IClickSignService, ClickSignService>();
-            return services;
+
         }
 
         /// <summary>
-        /// Extensão que adiciona o serviço de webhook à API.
+        /// Método construtor.
         /// </summary>
-        /// <typeparam name="TService">Implementação do serviço de webhook.</typeparam>
-        /// <param name="services">Instância do container de serviços.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddWebhookService<TService>(this IServiceCollection services) where TService : IWebhookService
+        /// <param name="message">Mensagem à ser definida na excessão.</param>
+        public WebhookNotEnabledException(string message) : base(message)
         {
-            services.AddScoped(typeof(IWebhookService), typeof(TService));
-            return services;
+
+        }
+
+        /// <summary>
+        /// Método construtor.
+        /// </summary>
+        /// <param name="innerException">Excessão que causou a falha.</param>
+        public WebhookNotEnabledException(Exception innerException) : base(innerException.Message)
+        {
+
+        }
+
+        /// <summary>
+        /// Método construtor.
+        /// </summary>
+        /// <param name="message">Mensagem à ser definida na excessão.</param>
+        /// <param name="innerException">Excessão que causou a falha.</param>
+        public WebhookNotEnabledException(string message, Exception innerException) : base(message, innerException)
+        {
+
         }
     }
 }

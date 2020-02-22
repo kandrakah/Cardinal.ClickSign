@@ -31,9 +31,9 @@ using System;
 namespace Cardinal.ClickSign.Converters
 {
     /// <summary>
-    /// Classe para conversão do enumerador <see cref="AuthType"/> para json e vice-versa.
+    /// Classe para conversão do enumerador <see cref="SignatureValidationStatus"/> para json e vice-versa.
     /// </summary>
-    public class AuthTypesConverter : JsonConverter
+    public class SignatureValidationConverter : JsonConverter
     {
         /// <summary>
         /// Método que valida se o tipo informado pode ser convertido.
@@ -59,16 +59,14 @@ namespace Cardinal.ClickSign.Converters
 
             switch (value)
             {
-                case "email":
-                    return AuthType.Email;
-                case "sms":
-                    return AuthType.Sms;
-                case "whatsapp":
-                    return AuthType.WhatsApp;
-                case "api":
-                    return AuthType.Api;
+                case "conferred":
+                    return SignatureValidationStatus.Conferred;
+                case "cpf_not_found":
+                    return SignatureValidationStatus.CpfNotFound;
+                case "divergent":
+                    return SignatureValidationStatus.Divergent;
                 default:
-                    return AuthType.Email;
+                    return SignatureValidationStatus.Unknow;
             }
         }
 
@@ -80,23 +78,20 @@ namespace Cardinal.ClickSign.Converters
         /// <param name="serializer">Serializador json.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var authType = (AuthType)value;
+            var authType = (SignatureValidationStatus)value;
             switch (authType)
             {
-                case AuthType.Email:
-                    writer.WriteValue("email");
+                case SignatureValidationStatus.Conferred:
+                    writer.WriteValue("conferred");
                     break;
-                case AuthType.Sms:
-                    writer.WriteValue("sms");
+                case SignatureValidationStatus.CpfNotFound:
+                    writer.WriteValue("cpf_not_found");
                     break;
-                case AuthType.WhatsApp:
-                    writer.WriteValue("whatsapp");
-                    break;
-                case AuthType.Api:
-                    writer.WriteValue("api");
+                case SignatureValidationStatus.Divergent:
+                    writer.WriteValue("divergent");
                     break;
                 default:
-                    writer.WriteValue("email");
+                    writer.WriteValue("unknow");
                     break;
             }
         }

@@ -24,35 +24,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-using Microsoft.Extensions.DependencyInjection;
+using Cardinal.ClickSign.Models;
 
-namespace Cardinal.ClickSign.Extensions
+namespace Cardinal.ClickSign
 {
     /// <summary>
-    /// Classe de extensões para <see cref="IServiceCollection"/>.
+    /// Interface para implementação do serviço de webhook.
     /// </summary>
-    public static class IServiceCollectionExtensions
+    public interface IWebhookService
     {
         /// <summary>
-        /// Extensão que adiciona o serviço de assinaturas de documentos ClickSign.
+        /// Método que faz a tratativa da requisição recebida.
         /// </summary>
-        /// <param name="services">Instância do container de serviços.</param>
-        public static IServiceCollection AddClickSignService(this IServiceCollection services)
-        {
-            services.AddScoped<IClickSignService, ClickSignService>();
-            return services;
-        }
-
-        /// <summary>
-        /// Extensão que adiciona o serviço de webhook à API.
-        /// </summary>
-        /// <typeparam name="TService">Implementação do serviço de webhook.</typeparam>
-        /// <param name="services">Instância do container de serviços.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddWebhookService<TService>(this IServiceCollection services) where TService : IWebhookService
-        {
-            services.AddScoped(typeof(IWebhookService), typeof(TService));
-            return services;
-        }
+        /// <param name="request">Requisição recebida.</param>
+        void Handle(WebhookRequest request);
     }
 }

@@ -24,10 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using Cardinal.ClickSign.Exceptions;
 using System;
 using System.IO;
-using System.Linq;
-using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,46 +34,73 @@ using System.Threading.Tasks;
 namespace Cardinal.ClickSign.Security
 {
     /// <summary>
-    /// Classe responsável pela validação de assinatura de um vetor de dados vindo de uma requisição Webhook do serviço.
+    /// Classe responsável pela validação de assinatura de dados vindos de uma requisição Webhook do serviço.
     /// </summary>
     public static class HmacSignatureValidator
     {
         /// <summary>
         /// Método que efetua a validação do conteúdo da mensagem de acordo com a assinatura Hmac.
         /// </summary>
-        /// <param name="request">Requisição à ser analizada.</param>
-        /// <param name="hmacKey">Chave Hmac de validação.</param>
-        /// <returns></returns>
-        public static async Task<bool> ValidateWebHookRequest(HttpRequestMessage request, string hmacKey)
+        /// <param name="data">dados da requisição à serem validados.</param>
+        /// <param name="hmacKey">Chave HMAC para validação.</param>
+        public static async Task Validate(WebhookData data, string hmacKey)
         {
-            var builder = new StringBuilder();
-            var content = await request.Content.ReadAsStreamAsync();
-            using (var bodyStream = new StreamReader(content))
+            if (string.IsNullOrEmpty(hmacKey))
             {
-                var bodyString = await bodyStream.ReadToEndAsync();
-                var bodySha256 = HmacSha256(bodyString, hmacKey);
-                var key = request.Headers.GetValues("Content-Hmac").FirstOrDefault()?.Replace("sha256=", string.Empty);                
-                return string.IsNullOrEmpty(key) ? false : key.Equals(bodySha256);
+                throw new ArgumentNullException("A chave HMAC não foi informada!");
+            }
+
+            using (var stream = new StreamReader(data.Body))
+            {
+                var bodyString = await stream.ReadToEndAsync();
+                var bodySha256 = GenerateHmacSignature(bodyString, hmacKey);
+                var result = string.IsNullOrEmpty(data.Signature) ? false : data.Signature.Equals(bodySha256);
+                if (!result)
+                {
+                    throw new WebhookUnauthorizedException("Assinatura de requisição não validada!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Método que efetua a validação do conteúdo da mensagem de acordo com a assinatura Hmac.
+        /// </summary>
+        /// <param name="body">Conteúdo à ser validado.</param>
+        /// <param name="requestHmac">HMAC enviado juntamente com o conteúdo.</param>
+        /// <param name="hmacKey">Chave HMAC para validação.</param>
+        public static void Validate(string body, string requestHmac, string hmacKey)
+        {
+            if (string.IsNullOrEmpty(hmacKey))
+            {
+                throw new ArgumentNullException("A chave HMAC não foi informada!");
+            }
+
+            var bodySha256 = GenerateHmacSignature(body, hmacKey);
+            var result = string.IsNullOrEmpty(requestHmac) ? false : requestHmac.Equals(hmacKey);
+            if (!result)
+            {
+                throw new WebhookUnauthorizedException("Assinatura de requisição não validada!");
             }
         }
 
         /// <summary>
         /// Método que faz a geração do valor Hmac de um conjunto de dados.
         /// </summary>
-        /// <param name="text">Dados à terem seu valor Hmac gerado.</param>
+        /// <param name="value">Dados à terem seu valor Hmac gerado.</param>
         /// <param name="key">Chave de criação.</param>
         /// <returns>Assinatura Hmac gerada.</returns>
-        public static string HmacSha256(string text, string key)
+        public static string GenerateHmacSignature(string value, string key)
         {
             var encoding = new UTF8Encoding();
-            var textBytes = encoding.GetBytes(text);
+            var textBytes = encoding.GetBytes(value);
             var keyBytes = encoding.GetBytes(key);
-            byte[] hashBytes;
+            var hashBytes = default(byte[]);
             using (var hash = new HMACSHA256(keyBytes))
             {
                 hashBytes = hash.ComputeHash(textBytes);
             }
-            return BitConverter.ToString(hashBytes).Replace("-", string.Empty).ToLower();
+            var result = BitConverter.ToString(hashBytes);
+            return result.Replace("-", string.Empty).ToLower();
         }
     }
 }
