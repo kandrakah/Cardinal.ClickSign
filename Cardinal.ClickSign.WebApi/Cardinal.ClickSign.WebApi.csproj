@@ -10,7 +10,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Cardinal.ClickSign</RootNamespace>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <PackageId>Cardinal.ClickSign.WebApi</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -38,11 +38,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cardinal.ClickSign" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +47,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cardinal.ClickSign\Cardinal.ClickSign.csproj" />
   </ItemGroup>
 
 </Project>

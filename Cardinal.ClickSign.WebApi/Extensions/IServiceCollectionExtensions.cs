@@ -42,7 +42,7 @@ namespace Cardinal.ClickSign.Extensions
             services.AddScoped<IClickSignService, ClickSignService>();
             return services;
         }
-
+        
         /// <summary>
         /// Extensão que adiciona o serviço de webhook à API.
         /// </summary>
