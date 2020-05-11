@@ -20,9 +20,7 @@
     <Description>Biblioteca de acesso à api do serviço de assinatura de documentos online ClickSign baseada em .Net Standard 2.0.</Description>
     <Version>1.2.2</Version>
     <LangVersion>latest</LangVersion>
-    <PackageReleaseNotes>Corrigida falha que impedia a obtenção dos links de download de um documento;
-Implementada validação de webhook com assinatura HMAC;
-Correções diversas.</PackageReleaseNotes>
+    <PackageReleaseNotes>Adicionado campo 'Group' ao AddSignerRequest e AddSignerResponse.</PackageReleaseNotes>
     <Copyright>Marcelo O. Mendes</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/kandrakah/Cardinal.ClickSign</PackageProjectUrl>
