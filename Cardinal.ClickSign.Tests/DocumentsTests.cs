@@ -38,7 +38,7 @@ namespace Cardinal.ClickSign.Tests
             var request = new UploadRequest();
             request.SetContent(docFile);
             request.Path = $"/DOCUMENT[{DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")}].pdf";
-            request.SequenceEnabled = true;
+            //request.SequenceEnabled = true;
 
             try
             {

@@ -32,12 +32,11 @@ namespace Cardinal.ClickSign.Tests
         [TestMethod]
         public void AddSignerToDoc()
         {
-            var docId = Guid.Parse("be9d78de-8db3-491f-a706-507b878d2a80");
+            var docId = Guid.Parse("0c2dec3b-89ab-4ff7-9fd2-58fbc20f6d9a");
             var signerId = Guid.Parse("c1e553de-7b5f-4a2b-9b87-0f573d704dfa");
             var addSigner = new AddSignerRequest();
             addSigner.DocumentKey = docId;
             addSigner.SignerKey = signerId;
-            addSigner.Group = 2;
 
             var result = this.Client.AddSignerToDocument(addSigner);
 

@@ -60,7 +60,7 @@ namespace Cardinal.ClickSign.Models
         /// O parâmetro funciona com sequence_enabled como true.
         /// </summary>
         [JsonProperty("group")]
-        public int Group { get; set; }
+        public int? Group { get; set; }
 
         /// <summary>
         /// Método construtor.
@@ -68,7 +68,7 @@ namespace Cardinal.ClickSign.Models
         public AddSignerRequest()
         {
             this.SignAs = SignType.Sign;
-            this.Group = 1;
+            this.Group = null;
         }
 
         /// <summary>

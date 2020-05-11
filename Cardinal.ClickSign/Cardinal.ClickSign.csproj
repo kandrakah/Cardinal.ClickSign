@@ -20,13 +20,15 @@
     <Description>Biblioteca de acesso à api do serviço de assinatura de documentos online ClickSign baseada em .Net Standard 2.0.</Description>
     <Version>1.2.2</Version>
     <LangVersion>latest</LangVersion>
-    <PackageReleaseNotes>Adicionado campo 'Group' ao AddSignerRequest e AddSignerResponse.</PackageReleaseNotes>
+    <PackageReleaseNotes>Transformando 'Group' de AddSignerRequest em uma propriedade anulável.</PackageReleaseNotes>
     <Copyright>Marcelo O. Mendes</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/kandrakah/Cardinal.ClickSign</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kandrakah/Cardinal.ClickSign</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>clicksign, assinatura, jurídico, C#, .net standard</PackageTags>    
+    <PackageTags>clicksign, assinatura, jurídico, C#, .net standard</PackageTags>
+    <AssemblyVersion>1.2.3.0</AssemblyVersion>
+    <FileVersion>1.2.3.0</FileVersion>    
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
