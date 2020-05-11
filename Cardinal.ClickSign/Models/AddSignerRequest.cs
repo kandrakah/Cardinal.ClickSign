@@ -56,11 +56,19 @@ namespace Cardinal.ClickSign.Models
         public SignType SignAs { get; set; }
 
         /// <summary>
+        /// Determina o grupo que o signatário deve ser vinculado.
+        /// O parâmetro funciona com sequence_enabled como true.
+        /// </summary>
+        [JsonProperty("group")]
+        public int Group { get; set; }
+
+        /// <summary>
         /// Método construtor.
         /// </summary>
         public AddSignerRequest()
         {
             this.SignAs = SignType.Sign;
+            this.Group = 1;
         }
 
         /// <summary>
@@ -69,7 +77,7 @@ namespace Cardinal.ClickSign.Models
         /// <returns>Cadeia de caracteres que representa o objeto atual.</returns>
         public override string ToString()
         {
-            return $"[DOCUMENT:{this.DocumentKey}][SIGNER:{this.SignerKey}][AS:{this.SignAs}]";
+            return $"[DOCUMENT:{this.DocumentKey}][SIGNER:{this.SignerKey}][AS:{this.SignAs}][GROUP:{this.Group}]";
         }
     }
 }

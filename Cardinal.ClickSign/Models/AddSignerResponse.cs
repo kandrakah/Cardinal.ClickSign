@@ -86,12 +86,18 @@ namespace Cardinal.ClickSign.Models
         public string Url { get; set; }
 
         /// <summary>
+        /// Determina o grupo que o signatário deve ser vinculado.
+        /// </summary>
+        [JsonProperty("group")]
+        public int Group { get; set; }
+
+        /// <summary>
         /// Método que traz uma cadeia de caracteres que representa o objeto atual.
         /// </summary>
         /// <returns>Cadeia de caracteres que representa o objeto atual.</returns>
         public override string ToString()
         {
-            return $"[KEY:{this.Key}][SIGNATURE.KEY:{this.SignatureKey}][DOCUMENT.KEY:{this.DocumentKey}][SIGNAS:{this.SignAs}][CREATED:{this.Created.ToString("yyyy-MM-ddTHH:mm:ss")}]";
+            return $"[KEY:{this.Key}][SIGNATURE.KEY:{this.SignatureKey}][DOCUMENT.KEY:{this.DocumentKey}][SIGNAS:{this.SignAs}][CREATED:{this.Created.ToString("yyyy-MM-ddTHH:mm:ss")}][GROUP:{this.Group}]";
         }
     }
 }

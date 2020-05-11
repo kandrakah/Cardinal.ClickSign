@@ -91,9 +91,11 @@ namespace Cardinal.ClickSign.Models
         public UploadRequest()
         {
             var now = DateTime.Now;
+            this.Path = "/";
             this.Deadline = now.AddDays(30);
             this.AutoClose = true;
             this.Locale = Locales.PtBR;
+            this.RemindInterval = 3;
         }
 
         /// <summary>

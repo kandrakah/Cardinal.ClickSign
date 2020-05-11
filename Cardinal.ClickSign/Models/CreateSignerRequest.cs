@@ -89,6 +89,16 @@ namespace Cardinal.ClickSign.Models
         }
 
         /// <summary>
+        /// Método para definir o tipo de autenticação do assinante.
+        /// </summary>
+        /// <param name="authType">Tipo de autenticação à ser utilizada pelo assinante.</param>
+        public void SetAuth(AuthType authType)
+        {
+            this.Auths.Clear();
+            this.Auths.Add(authType);
+        }
+
+        /// <summary>
         /// Método que traz uma cadeia de caracteres que representa o objeto atual.
         /// </summary>
         /// <returns>Cadeia de caracteres que representa o objeto atual.</returns>

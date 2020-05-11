@@ -18,7 +18,7 @@
     <Company>Marcelo O. Mendes</Company>
     <Product>Cardinal.ClickSign</Product>
     <Description>Biblioteca de acesso à api do serviço de assinatura de documentos online ClickSign baseada em .Net Standard 2.0.</Description>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <LangVersion>latest</LangVersion>
     <PackageReleaseNotes>Corrigida falha que impedia a obtenção dos links de download de um documento;
 Implementada validação de webhook com assinatura HMAC;

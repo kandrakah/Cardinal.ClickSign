@@ -970,6 +970,12 @@
             A que título será realizada a assinatura. Veja <see cref="T:Cardinal.ClickSign.Enumerators.SignType"/>.
             </summary>
         </member>
+        <member name="P:Cardinal.ClickSign.Models.AddSignerRequest.Group">
+            <summary>
+            Determina o grupo que o signatário deve ser vinculado.
+            O parâmetro funciona com sequence_enabled como true.
+            </summary>
+        </member>
         <member name="M:Cardinal.ClickSign.Models.AddSignerRequest.#ctor">
             <summary>
             Método construtor.
@@ -1024,6 +1030,11 @@
         <member name="P:Cardinal.ClickSign.Models.AddSignerResponse.Url">
             <summary>
             Url de assinatura do documento.
+            </summary>
+        </member>
+        <member name="P:Cardinal.ClickSign.Models.AddSignerResponse.Group">
+            <summary>
+            Determina o grupo que o signatário deve ser vinculado.
             </summary>
         </member>
         <member name="M:Cardinal.ClickSign.Models.AddSignerResponse.ToString">
@@ -1159,6 +1170,12 @@
             <summary>
             Método construtor.
             </summary>
+        </member>
+        <member name="M:Cardinal.ClickSign.Models.CreateSignerRequest.SetAuth(Cardinal.ClickSign.Enumerators.AuthType)">
+            <summary>
+            Método para definir o tipo de autenticação do assinante.
+            </summary>
+            <param name="authType">Tipo de autenticação à ser utilizada pelo assinante.</param>
         </member>
         <member name="M:Cardinal.ClickSign.Models.CreateSignerRequest.ToString">
             <summary>
